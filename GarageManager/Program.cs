@@ -1,9 +1,16 @@
-﻿namespace GarageManager;
+﻿using GarageManager.Garage;
+using GarageManager.Garage.Interfaces;
+using GarageManager.Garage.Vehicles;
 
-class Program
+namespace GarageManager;
+
+public static class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        IGarage<Car> garage = new Garage<Car>(10);
+        Console.WriteLine(garage.VehicleCount);
+        garage.AddVehicle(new Car("ABC123"));
+        Console.WriteLine(garage.VehicleCount);
     }
 }
