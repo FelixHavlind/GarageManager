@@ -6,4 +6,5 @@ public interface IGarage<T> : IEnumerable<T> where T : Vehicle
     void RemoveVehicle(string registrationNumber);
     void RemoveVehicle(T vehicle);
     int VehicleCount { get; }
+    int Capacity { get; }
 }
