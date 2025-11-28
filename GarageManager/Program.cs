@@ -10,7 +10,10 @@ public static class Program
     {
         IGarage<Car> garage = new Garage<Car>(10);
         Console.WriteLine(garage.VehicleCount);
-        garage.AddVehicle(new Car("ABC123"));
+        var car = new Car("ABC123");
+        garage.AddVehicle(car);
+        Console.WriteLine(garage.VehicleCount);
+        garage.RemoveVehicle(car);
         Console.WriteLine(garage.VehicleCount);
     }
 }
