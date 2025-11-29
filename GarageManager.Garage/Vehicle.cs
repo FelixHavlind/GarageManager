@@ -1,10 +1,27 @@
+using System.Text.RegularExpressions;
+
 namespace GarageManager.Garage;
 
-public abstract class Vehicle
+public abstract partial class Vehicle
 {
-    public abstract string RegistrationNumber { get; init; }
+    [GeneratedRegex("^[A-z]{3}[0-9]{3}$")]
+    private partial Regex ValidRegistrationNumber();
+    
+    public string RegistrationNumber { get; }
+    public string Color { get; }
 
-    protected bool Equals(Vehicle other)
+    protected Vehicle(string registrationNumber, string color)
+    {
+        if (!ValidRegistrationNumber().IsMatch(registrationNumber))
+        {
+            throw new ArgumentException("Invalid registration number format");
+        }
+        
+        RegistrationNumber = registrationNumber;
+        Color = color;
+    }
+    
+    public bool Equals(Vehicle other)
     {
         return RegistrationNumber == other.RegistrationNumber;
     }
@@ -34,6 +51,6 @@ public abstract class Vehicle
 
     public override string ToString()
     {
-        return  $"{RegistrationNumber}";
+        return  $"{RegistrationNumber}, {Color}";
     }
 }

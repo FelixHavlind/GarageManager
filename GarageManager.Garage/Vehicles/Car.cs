@@ -1,6 +1,11 @@
 namespace GarageManager.Garage.Vehicles;
 
-public class Car(string registrationNumber) : Vehicle
+public sealed class Car(string registrationNumber, string color, string manufacturer) : Vehicle(registrationNumber, color)
 {
-    public sealed override string RegistrationNumber { get; init; } = registrationNumber;
+    public string Manufacturer { get; init; } = manufacturer;
+
+    public override string ToString()
+    {
+        return $"{GetType().Name}: " + base.ToString() + $", {Manufacturer}";
+    }
 }

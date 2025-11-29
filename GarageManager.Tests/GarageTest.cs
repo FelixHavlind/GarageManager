@@ -10,7 +10,7 @@ public class GarageTest
     {
         // ARRANGE
         var gm = new Garage<Car>(3);
-        var car = new Car("ABC123");
+        var car = new Car("ABC123", "Green", "Volvo");
         var expectedResult = 1;
         
         // ACT
@@ -25,7 +25,7 @@ public class GarageTest
     {
         // ARRANGE
         var gm = new Garage<Car>(0);
-        var car = new Car("ABC123");
+        var car = new Car("ABC123", "Green", "Volvo");
         var expectedResult = "Garage is full";
         
         // ASSERT
