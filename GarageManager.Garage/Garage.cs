@@ -17,10 +17,20 @@ public class Garage<T>(int capacity) : IGarage<T> where T : Vehicle
             throw new InvalidOperationException("Garage is full");
         }
         
+        if (_vehicles.Contains(vehicle))
+        {
+            throw new InvalidOperationException($"Vehicle with registration number: '{vehicle.RegistrationNumber}', already exist in garage");
+        }
+        
         _vehicles[VehicleCount++] = vehicle;
     }
     public void RemoveVehicle(T vehicle)
     {
+        if (!_vehicles.Contains(vehicle))
+        {
+            throw new InvalidOperationException($"Vehicle with registration number: '{vehicle.RegistrationNumber}', does not exist in garage");
+        }
+        
         RemoveVehicle(vehicle.RegistrationNumber);
     }
     public void RemoveVehicle(string registrationNumber)
@@ -42,7 +52,7 @@ public class Garage<T>(int capacity) : IGarage<T> where T : Vehicle
 
         if (!indexFound)
         {
-            throw new InvalidOperationException("Vehicle not found in garage");
+            throw new InvalidOperationException($"Vehicle with registration number: '{registrationNumber}', does not exist in garage");
         }
         
         VehicleCount--;

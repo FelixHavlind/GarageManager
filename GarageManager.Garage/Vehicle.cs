@@ -20,11 +20,19 @@ public abstract partial class Vehicle
         RegistrationNumber = registrationNumber;
         Color = color;
     }
+
+    public virtual bool Contains(string prompt)
+    {
+        return GetType().Name.Contains(prompt, StringComparison.CurrentCultureIgnoreCase) ||
+               RegistrationNumber.Contains(prompt, StringComparison.CurrentCultureIgnoreCase) ||
+               Color.Contains(prompt, StringComparison.CurrentCultureIgnoreCase);
+    }
     
     public bool Equals(Vehicle other)
     {
         return RegistrationNumber == other.RegistrationNumber;
     }
+    
     public override bool Equals(object? obj)
     {
         if (obj is null)

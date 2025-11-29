@@ -1,11 +1,16 @@
 namespace GarageManager.Garage.Vehicles;
 
-public sealed class Car(string registrationNumber, string color, string manufacturer) : Vehicle(registrationNumber, color)
+public sealed class Car(string registrationNumber, string color, int trunkSize) : Vehicle(registrationNumber, color)
 {
-    public string Manufacturer { get; init; } = manufacturer;
+    public int TrunkSize { get; } = trunkSize;
 
     public override string ToString()
     {
-        return $"{GetType().Name}: " + base.ToString() + $", {Manufacturer}";
+        return $"{GetType().Name}: " + base.ToString() + $", {TrunkSize}";
+    }
+
+    public override bool Contains(string prompt)
+    {
+        return $"{TrunkSize}".Contains(prompt, StringComparison.CurrentCultureIgnoreCase) || base.Contains(prompt);
     }
 }
