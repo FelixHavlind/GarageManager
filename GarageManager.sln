@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageManager.Garage", "Gar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageManager.Tests", "GarageManager.Tests\GarageManager.Tests.csproj", "{F6324B14-E495-44F5-BE03-27643F88207C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageManager.Console", "GarageManager.Console\GarageManager.Console.csproj", "{9DBDB86D-7528-461E-A56B-640B63CA291C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F6324B14-E495-44F5-BE03-27643F88207C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6324B14-E495-44F5-BE03-27643F88207C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6324B14-E495-44F5-BE03-27643F88207C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBDB86D-7528-461E-A56B-640B63CA291C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBDB86D-7528-461E-A56B-640B63CA291C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBDB86D-7528-461E-A56B-640B63CA291C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBDB86D-7528-461E-A56B-640B63CA291C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
