@@ -10,6 +10,7 @@ public class ConsoleUi : IUi
     
     // METHODS
     public int GetInputAsInteger() => int.TryParse(GetInputAsString(), out var integer) ? integer : -1;
+    public double GetInputAsDouble() => double.TryParse(GetInputAsString(), out var d) ? d : -1.0;
     public string GetInputAsString() => System.Console.ReadLine() ?? "ERROR_STRING";
     public bool ValidRegistrationNumber(string registrationNumber)
     {
@@ -61,22 +62,13 @@ public class ConsoleUi : IUi
         System.Console.WriteLine(AdjustWidth(prompt));
         System.Console.WriteLine(Messages.MenuBottom);
     }
-    public void PrintText(string[]? prompts)
+    public void PrintText(string[] prompts)
     {
         System.Console.WriteLine(Messages.MenuTop);
 
-        if (prompts == null)
+        foreach (var prompt in prompts)
         {
-            System.Console.WriteLine(AdjustWidth("No vehicles in the garage."));
-            System.Console.WriteLine(Messages.ExitOption);
-        }
-
-        else
-        {
-            foreach (var prompt in prompts)
-            {
-                System.Console.WriteLine(AdjustWidth(prompt));
-            }     
+            System.Console.WriteLine(AdjustWidth(prompt));
         }
         
         System.Console.WriteLine(Messages.MenuBottom);

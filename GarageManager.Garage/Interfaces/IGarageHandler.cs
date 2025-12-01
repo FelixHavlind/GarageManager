@@ -7,10 +7,11 @@ public interface IGarageHandler
     
     void EnterGarage(Vehicle vehicle);
     void LeaveGarage(Vehicle vehicle);
+    void LeaveGarage(string registrationNumber);
     
-    string GetVehicleList();
-    string GetVehicleTypeList();
+    string? GetVehicleList();
+    string? GetVehicleTypeList();
     string GetVehicle(string registrationNumber);
     
-    string SearchVehicle(string searchPrompt);
+    string? SearchVehicle(string searchPrompt);
 }

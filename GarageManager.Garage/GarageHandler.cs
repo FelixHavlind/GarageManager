@@ -12,9 +12,15 @@ public class GarageHandler(int capacity) : IGarageHandler
 
     public void EnterGarage(Vehicle vehicle) => _garage.AddVehicle(vehicle);
     public void LeaveGarage(Vehicle vehicle) => _garage.RemoveVehicle(vehicle);
-    
-    public string GetVehicleList()
+    public void LeaveGarage(string registrationNumber) => _garage.RemoveVehicle(registrationNumber);
+
+    public string? GetVehicleList()
     {
+        if (_garage.VehicleCount == 0)
+        {
+            return null;
+        }
+        
         var stringBuilder = new StringBuilder();
         
         foreach (var vehicle in _garage)
@@ -24,8 +30,13 @@ public class GarageHandler(int capacity) : IGarageHandler
         
         return stringBuilder.ToString();
     }
-    public string GetVehicleTypeList()
+    public string? GetVehicleTypeList()
     {
+        if (_garage.VehicleCount == 0)
+        {
+            return null;
+        }
+        
         var dictionary = new Dictionary<string, int>();
 
         foreach (var vehicle in _garage)
@@ -58,7 +69,7 @@ public class GarageHandler(int capacity) : IGarageHandler
         throw new ArgumentException($"Vehicle with the registration number: {registrationNumber}, does not exist");
     }
 
-    public string SearchVehicle(string searchPrompt)
+    public string? SearchVehicle(string searchPrompt)
     {
         var stringBuilder = new StringBuilder();
         
@@ -70,6 +81,6 @@ public class GarageHandler(int capacity) : IGarageHandler
             }
         }
 
-        return stringBuilder.ToString();
+        return stringBuilder.Length > 0 ? stringBuilder.ToString() : null;
     }
 }

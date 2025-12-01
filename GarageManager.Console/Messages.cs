@@ -27,7 +27,11 @@ public static class Messages
         """;
     public const string AddVehicleOptions = 
         """
-            ║ (1) Car                                      ║
+            ║ (1) Airplane                                 ║
+            ║ (2) Boat                                     ║
+            ║ (3) Bus                                      ║
+            ║ (4) Car                                      ║
+            ║ (5) Motorcycle                               ║
         """;
 
     public const string ExitOption =
