@@ -24,6 +24,7 @@ public static class Messages
             ║ (3) List all parked vehicles                 ║
             ║ (4) List vehicles by type                    ║
             ║ (5) Search for a parked vehicle              ║
+            ║ (6) Create new garage                        ║
         """;
     public const string AddVehicleOptions = 
         """

@@ -1,14 +1,31 @@
 using System.Text;
 using GarageManager.Garage.Interfaces;
+using GarageManager.Garage.Vehicles;
 
 namespace GarageManager.Garage;
 
-public class GarageHandler(int capacity) : IGarageHandler
+public class GarageHandler() : IGarageHandler
 {
-    private readonly IGarage<Vehicle> _garage = new Garage<Vehicle>(capacity);
+    private IGarage<Vehicle> _garage = new Garage<Vehicle>(10);
     
     public int VehicleCount => _garage.VehicleCount;
     public int Capacity => _garage.Capacity;
+
+    public void CreateGarage(int capacity, bool populate)
+    {
+        _garage = new Garage<Vehicle>(capacity);
+
+        if (!populate)
+        {
+            return;
+        }
+        
+        _garage.AddVehicle(new Airplane("ABC123", "Green", 46.5));
+        _garage.AddVehicle(new Boat("CDE234", "Red", "Flat"));
+        _garage.AddVehicle(new Bus("RFG345", "Yellow", 32));
+        _garage.AddVehicle(new Car("CAS321", "Teal", 300));
+        _garage.AddVehicle(new Motorcycle("LES264", "Black", "Ape-hangers"));
+    }
 
     public void EnterGarage(Vehicle vehicle) => _garage.AddVehicle(vehicle);
     public void LeaveGarage(Vehicle vehicle) => _garage.RemoveVehicle(vehicle);

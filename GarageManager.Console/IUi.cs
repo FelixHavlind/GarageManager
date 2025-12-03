@@ -7,6 +7,7 @@ public interface IUi
     int GetInputAsInteger();
     double GetInputAsDouble();
     string GetInputAsString();
+    bool GetInputAsBool();
     bool ValidRegistrationNumber(string registrationNumber);
     
     void PrintMainMenu();

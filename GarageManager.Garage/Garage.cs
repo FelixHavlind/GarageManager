@@ -28,7 +28,7 @@ public class Garage<T>(int capacity) : IGarage<T> where T : Vehicle
     {
         if (!_vehicles.Contains(vehicle))
         {
-            throw new InvalidOperationException($"Vehicle with registration number: '{vehicle.RegistrationNumber}', does not exist in garage");
+            throw new ArgumentException($"Vehicle with registration number: '{vehicle.RegistrationNumber}', does not exist in garage");
         }
         
         RemoveVehicle(vehicle.RegistrationNumber);
@@ -52,7 +52,7 @@ public class Garage<T>(int capacity) : IGarage<T> where T : Vehicle
 
         if (!indexFound)
         {
-            throw new InvalidOperationException($"Vehicle with registration number: '{registrationNumber}', does not exist in garage");
+            throw new ArgumentException($"Vehicle with registration number: '{registrationNumber}', does not exist in garage");
         }
         
         VehicleCount--;

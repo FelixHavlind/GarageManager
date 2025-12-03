@@ -4,6 +4,8 @@ public interface IGarageHandler
 {
     int VehicleCount { get; }
     int Capacity { get; }
+
+    void CreateGarage(int capacity, bool populate);
     
     void EnterGarage(Vehicle vehicle);
     void LeaveGarage(Vehicle vehicle);

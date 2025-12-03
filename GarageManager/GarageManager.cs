@@ -8,7 +8,7 @@ namespace GarageManager;
 public static class GarageManager
 {
     private static readonly IUi Ui = new ConsoleUi();
-    private static readonly IGarageHandler GarageHandler = new GarageHandler(10);
+    private static readonly IGarageHandler GarageHandler = new GarageHandler();
         
     public static int Start()
     {
@@ -39,6 +39,10 @@ public static class GarageManager
                 
                 case 5:
                     SearchVehicle();
+                    break;
+                
+                case 6:
+                    CreateNewGarage();
                     break;
                 
                 case 0:
@@ -209,5 +213,18 @@ public static class GarageManager
         }
         
         System.Console.ReadKey();
+    }
+
+    private static void CreateNewGarage()
+    {
+        Ui.Clear();
+        Ui.PrintText("Enter garage capacity");
+        var capacity = Ui.GetInputAsInteger();
+        
+        Ui.Clear();
+        Ui.PrintText("Populate garage? (y/N)");
+        var populate = Ui.GetInputAsBool();
+        
+        GarageHandler.CreateGarage(capacity, populate);
     }
 }
