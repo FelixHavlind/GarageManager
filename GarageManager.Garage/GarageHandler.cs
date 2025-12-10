@@ -4,7 +4,7 @@ using GarageManager.Garage.Vehicles;
 
 namespace GarageManager.Garage;
 
-public class GarageHandler() : IGarageHandler
+public class GarageHandler : IGarageHandler
 {
     private IGarage<Vehicle> _garage = new Garage<Vehicle>(10);
     

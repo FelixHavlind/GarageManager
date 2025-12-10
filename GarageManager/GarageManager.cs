@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using GarageManager.Console;
 using GarageManager.Garage;
 using GarageManager.Garage.Interfaces;
@@ -65,9 +66,7 @@ public static class GarageManager
         {
             case 1:
             {
-                Ui.Clear();
-                Ui.PrintText("Enter airplane registration number");
-                var registrationNumber = Ui.GetInputAsString();
+                var registrationNumber = Ui.GetInputAsRegistrationNumber();
                 
                 Ui.Clear();
                 Ui.PrintText("Enter airplane color");
@@ -77,14 +76,12 @@ public static class GarageManager
                 Ui.PrintText("Enter airplane wingspan");
                 var wingspan = Ui.GetInputAsDouble();
                 
-                GarageHandler.EnterGarage(new Airplane(registrationNumber, color, wingspan));
+                GarageHandler.EnterGarage(new Airplane(registrationNumber.ToUpper(), color, wingspan));
                 break;
             }
             case 2:
             {
-                Ui.Clear();
-                Ui.PrintText("Enter boat registration number");
-                var registrationNumber = Ui.GetInputAsString();
+                var registrationNumber = Ui.GetInputAsRegistrationNumber();
                 
                 Ui.Clear();
                 Ui.PrintText("Enter boat color");
@@ -94,14 +91,12 @@ public static class GarageManager
                 Ui.PrintText("Enter boat hull type");
                 var hullType = Ui.GetInputAsString();
                 
-                GarageHandler.EnterGarage(new Boat(registrationNumber, color, hullType));
+                GarageHandler.EnterGarage(new Boat(registrationNumber.ToUpper(), color, hullType));
                 break;
             }
             case 3:
             {
-                Ui.Clear();
-                Ui.PrintText("Enter bus registration number");
-                var registrationNumber = Ui.GetInputAsString();
+                var registrationNumber = Ui.GetInputAsRegistrationNumber();
                 
                 Ui.Clear();
                 Ui.PrintText("Enter bus color");
@@ -111,14 +106,12 @@ public static class GarageManager
                 Ui.PrintText("Enter bus passenger capacity");
                 var passengerCapacity = Ui.GetInputAsInteger();
                 
-                GarageHandler.EnterGarage(new Bus(registrationNumber, color, passengerCapacity));
+                GarageHandler.EnterGarage(new Bus(registrationNumber.ToUpper(), color, passengerCapacity));
                 break;
             }
             case 4:
             {
-                Ui.Clear();
-                Ui.PrintText("Enter car registration number");
-                var registrationNumber = Ui.GetInputAsString();
+                var registrationNumber = Ui.GetInputAsRegistrationNumber();
                 
                 Ui.Clear();
                 Ui.PrintText("Enter car color");
@@ -128,14 +121,12 @@ public static class GarageManager
                 Ui.PrintText("Enter car trunk size");
                 var trunkSize = Ui.GetInputAsInteger();
                 
-                GarageHandler.EnterGarage(new Car(registrationNumber, color, trunkSize));
+                GarageHandler.EnterGarage(new Car(registrationNumber.ToUpper(), color, trunkSize));
                 break;
             }
             case 5:
             {
-                Ui.Clear();
-                Ui.PrintText("Enter motorcycle registration number");
-                var registrationNumber = Ui.GetInputAsString();
+                var registrationNumber = Ui.GetInputAsRegistrationNumber();
                 
                 Ui.Clear();
                 Ui.PrintText("Enter motorcycle color");
@@ -145,7 +136,7 @@ public static class GarageManager
                 Ui.PrintText("Enter motorcycle handlebar type");
                 var handlebarType = Ui.GetInputAsString();
                 
-                GarageHandler.EnterGarage(new Motorcycle(registrationNumber, color, handlebarType));
+                GarageHandler.EnterGarage(new Motorcycle(registrationNumber.ToUpper(), color, handlebarType));
                 break;
             }
         }

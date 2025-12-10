@@ -2,17 +2,14 @@ using System.Text.RegularExpressions;
 
 namespace GarageManager.Garage;
 
-public abstract partial class Vehicle
+public abstract class Vehicle
 {
-    [GeneratedRegex("^[A-z]{3}[0-9]{3}$")]
-    private partial Regex ValidRegistrationNumber();
-    
     public string RegistrationNumber { get; }
     public string Color { get; }
 
     protected Vehicle(string registrationNumber, string color)
     {
-        if (!ValidRegistrationNumber().IsMatch(registrationNumber))
+        if (!Regex.IsMatch(registrationNumber, "^[A-z]{3}\\d{3}$"))
         {
             throw new ArgumentException("Invalid registration number format");
         }

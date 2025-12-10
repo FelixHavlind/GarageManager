@@ -14,11 +14,6 @@ public class ConsoleUi : IUi
     public string GetInputAsString() => System.Console.ReadLine() ?? "ERROR_STRING";
     public bool GetInputAsBool() => GetInputAsString() is "Y" or "y";
 
-    public bool ValidRegistrationNumber(string registrationNumber)
-    {
-        return IsMatch(registrationNumber, "[A-Za-z]{3}\\d{3}$");
-    }
-
     public void PrintMainMenu()
     {
         System.Console.WriteLine(Messages.MenuTop);
@@ -36,6 +31,33 @@ public class ConsoleUi : IUi
     public void PrintExit()
     {
         PrintText("Exiting application...");
+    }
+    public string GetInputAsRegistrationNumber()
+    {
+        string registrationNumber;
+        
+        do
+        {
+            Clear();
+            System.Console.WriteLine(Messages.MenuTop);
+            System.Console.WriteLine(AdjustWidth("Enter registration number (ABC123)"));
+            System.Console.WriteLine(Messages.MenuBottom);
+
+            registrationNumber = GetInputAsString().Trim();
+
+            if (IsMatch(registrationNumber, "[A-z]{3}\\d{3}$"))
+            {
+                continue;
+            }
+            
+            Clear();
+            System.Console.WriteLine(Messages.MenuTop);
+            System.Console.WriteLine(AdjustWidth("Invalid format"));
+            System.Console.WriteLine(Messages.MenuBottom);
+            System.Console.ReadKey();
+        } while (!IsMatch(registrationNumber, "[A-z]{3}\\d{3}$"));
+
+        return registrationNumber;
     }
     public void PrintText(string prompt)
     {
@@ -56,7 +78,7 @@ public class ConsoleUi : IUi
     }
     
     // PRIVATE
-    private string AdjustWidth(string s)
+    private static string AdjustWidth(string s)
     {
         var sLength = s.Length;
         

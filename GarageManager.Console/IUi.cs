@@ -8,11 +8,11 @@ public interface IUi
     double GetInputAsDouble();
     string GetInputAsString();
     bool GetInputAsBool();
-    bool ValidRegistrationNumber(string registrationNumber);
     
     void PrintMainMenu();
     void PrintAddVehicle();
     void PrintExit();
     void PrintText(string prompt);
     void PrintText(string[] prompts);
+    string GetInputAsRegistrationNumber();
 }
